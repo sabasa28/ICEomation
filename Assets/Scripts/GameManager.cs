@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameManager : PersistentMonobehaviourSingleton<GameManager>
 {
     int matchDuration;
     float startGameplayTime = 0;
     int maxIceBergSize;
+
     public void GameOver(int newMaxIceBergSize)
     {
         matchDuration = (int) (Time.time - startGameplayTime);

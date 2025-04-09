@@ -45,12 +45,15 @@ public class InteractingGrid : MonoBehaviourSingleton<InteractingGrid>
     [SerializeField] Barrel barrelPrefab;
     [SerializeField] int barrelWoodCost;
     [SerializeField] int barrelMetalCost;
+    [SerializeField] int barrelStoneCost;
     [SerializeField] FishingPlace fishingPlacePrefab;
     [SerializeField] int fishingPlaceWoodCost;
     [SerializeField] int fishingPlaceMetalCost;
+    [SerializeField] int fishingPlaceStoneCost;
     [SerializeField] Freezer freezerPrefab;
     [SerializeField] int freezerWoodCost;
     [SerializeField] int freezerMetalCost;
+    [SerializeField] int freezerStoneCost;
 
     Vector2 spawningOffset = new Vector2(0.5f, 0.5f);
 
@@ -102,7 +105,7 @@ public class InteractingGrid : MonoBehaviourSingleton<InteractingGrid>
             switch (construction)
             {
                 case PosibleInteractables.Barrel:
-                    if (playerResources.ModifyWoodAndMetalAmounts(-barrelMetalCost, -barrelWoodCost))
+                    if (playerResources.ModifyMaterialsAmounts(-barrelMetalCost, -barrelWoodCost, -barrelStoneCost))
                     {
                         interactable = Instantiate(barrelPrefab, GetWorldPosFromGridPos(gridPos), Quaternion.identity);
                     }
@@ -112,7 +115,7 @@ public class InteractingGrid : MonoBehaviourSingleton<InteractingGrid>
                     }
                     break;
                 case PosibleInteractables.FishinPlace:
-                    if (playerResources.ModifyWoodAndMetalAmounts(-fishingPlaceMetalCost, -fishingPlaceWoodCost))
+                    if (playerResources.ModifyMaterialsAmounts(-fishingPlaceMetalCost, -fishingPlaceWoodCost, -fishingPlaceStoneCost))
                     {
                         interactable = Instantiate(fishingPlacePrefab, GetWorldPosFromGridPos(gridPos), Quaternion.identity);
                     }
@@ -123,7 +126,7 @@ public class InteractingGrid : MonoBehaviourSingleton<InteractingGrid>
                     break;
                 case PosibleInteractables.Freezer:
 
-                    if (playerResources.ModifyWoodAndMetalAmounts(-freezerMetalCost, -freezerWoodCost))
+                    if (playerResources.ModifyMaterialsAmounts(-freezerMetalCost, -freezerWoodCost, -freezerStoneCost))
                     {
                         interactable = Instantiate(freezerPrefab, GetWorldPosFromGridPos(gridPos), Quaternion.identity);
                     }

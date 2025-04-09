@@ -9,9 +9,11 @@ public class PlayerResources : MonoBehaviour
     [SerializeField] Animator bucketAnimator;
     [SerializeField] TextMeshProUGUI woodText;
     [SerializeField] TextMeshProUGUI metalText;
+    [SerializeField] TextMeshProUGUI stoneText;
     [SerializeField] TextMeshProUGUI fishText;
     [SerializeField] int wood;
     [SerializeField] int metal;
+    [SerializeField] int stone;
     [SerializeField] int fish;
     [SerializeField] float bucketTimeToGrabWater;
 
@@ -28,6 +30,7 @@ public class PlayerResources : MonoBehaviour
         woodText.text = wood.ToString();
         metalText.text = metal.ToString();
         fishText.text = fish.ToString();
+        stoneText.text = stone.ToString();
     }
 
     public InteractionResult InteractBucketToWater()
@@ -108,12 +111,28 @@ public class PlayerResources : MonoBehaviour
         }
     }
 
-    public bool ModifyWoodAndMetalAmounts(int AmountToAddMetal, int AmountToAddWood)
+    public bool ModifyStoneAmount(int AmountToAdd)
     {
-        if (metal + AmountToAddMetal >= 0 && wood + AmountToAddWood >= 0)
+        if ((stone + AmountToAdd) < 0)
+        {
+            return false;
+        }
+        else
+        {
+            stone += AmountToAdd;
+            stoneText.text = stone.ToString();
+            return true;
+        }
+    }
+
+    public bool ModifyMaterialsAmounts(int AmountToAddMetal, int AmountToAddWood, int AmountToAddStone)
+    {
+        if (metal + AmountToAddMetal >= 0 && wood + AmountToAddWood >= 0 && stone + AmountToAddStone >= 0)
         {
             ModifyMetalAmount(AmountToAddMetal);
             ModifyWoodAmount(AmountToAddWood);
+            ModifyStoneAmount(AmountToAddStone);
+
             return true;
         }
         return false;
@@ -137,5 +156,10 @@ public class PlayerResources : MonoBehaviour
     {
         yield return new WaitForSeconds(timeBeforeStateSet);
         InternalSetBucketState(newBucketState);
+    }
+
+    public void OnUpgradeAdded()
+    {
+        Debug.Log("UPGRADE ADDED");
     }
 }

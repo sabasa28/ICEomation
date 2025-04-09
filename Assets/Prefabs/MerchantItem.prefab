@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 907019735153518354}
   - component: {fileID: 907019735153518353}
   - component: {fileID: 907019735153518352}
-  - component: {fileID: 907019735153518356}
+  - component: {fileID: 2839411437092940996}
   m_Layer: 0
   m_Name: MerchantItem
   m_TagString: Untagged
@@ -111,7 +111,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &907019735153518356
+--- !u!114 &2839411437092940996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,10 +120,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 907019735153518357}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebd85ef2ae2a5434e94529e0fb6a1699, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a6363aeb13105347af595142d17d13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceToGive: 1
+  resourceToGive: 0
   amountOfResource: 2
   resourceText: {fileID: 6297794870391146883}
 --- !u!1 &6297794869422314038
